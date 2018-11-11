@@ -13,9 +13,9 @@ int motor_in_pins [4][2] = {
 int stdby_pins [2] = {26, 34};
 
 
-//  Moore - Penrose inverz matrica koeficjenata pomnožena s masom robota, uz masu od 0.55 kg i radijus od 9 cm i inerciju I = 0.5*M*pow(R,2)
 
-double mass = 0.55; //masa robota
+
+double mass = 0.55; //mass of the robot
 
 
 
@@ -27,7 +27,9 @@ void  drive (double ax, double ay, double omega, double speedLimit){ //speedLimi
       double f_weights [4];
       int motor_in [4][2]; //direction
       int wheel_speed[4];
-      double inv_koef [4][3]= {
+      //  Moore - Penrose inverse matrix of coefficients multiplied with the mass of the robot, calculated for the following values:
+      //mass = 0.55 kg, radius = 9 cm, inertia = 0.5*mass*pow(radisu,2)
+      double inv_koef [4][3]= { 
        {-0.2422,0.2422 ,0.0077},
        {-0.2422,-0.2422 ,0.0077},
        {0.2422,-0.2422 ,0.0077},
