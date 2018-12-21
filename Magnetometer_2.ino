@@ -36,11 +36,8 @@ void loop() {
   float heading = atan2(data.magnetic.x, data.magnetic.y);  // again finds the azimuth
   heading += declination;
   newAngle = heading - initialAngle;  // the result - angle between the desired "north" and current direction
- /* if(newAngle < 0) //correction for reverse signs
-    newAngle += 2*PI; 
-  if(newAngle > 2*PI)
-    newAngle -= 2*PI;*/
-  Serial.print("Heading: ");
+  if(newAngle < 0) //correction for reverse signs
+    newAngle += 2*PI;
   Serial.println(newAngle*180/M_PI);
   delay(1000);
 }
